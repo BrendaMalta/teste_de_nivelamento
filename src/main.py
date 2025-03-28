@@ -27,20 +27,20 @@ else:
 # Lista para armazenar os caminhos dos arquivos PDF
 pdf_files = []
 
-# Baixar e salvar os PDFs
+# baixa os pdfs
 for link in pdf_links:
     response = requests.get(link)  
 
     if response.status_code == 200:
-        # Pega a última parte da URL para nomear o arquivo
+
         filename = link.split("/")[-1]
         file_path = os.path.join(download_folder, filename)  # Caminho completo
 
-        # Salva na pasta "downloads_pdf"
+
         with open(file_path, 'wb') as file:
             file.write(response.content)  
         
-        # Adiciona o caminho do arquivo à lista pdf_files
+        
         pdf_files.append(file_path)
 
         print(f"Arquivo {filename} baixado com sucesso em {file_path}!")
